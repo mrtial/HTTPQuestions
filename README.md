@@ -47,6 +47,8 @@ http://locahost:5000/animals?puppies=fido&puppies=max&puppies=moxie
 
 ```
 The query string starts from '?'. The equal sign is where we specifiy parameter and value. 'puppies' is the parameter with value of 'fido'. The '&' adds up other query condition.
+
+The same key 'puppies' appear 3 times. It creates 'or' condition on server to query puppies with name 'fido' or 'max' or 'moxie'. 
 ```
 
 __HTTP Request/Response__
@@ -102,7 +104,7 @@ code range of 300 is something about 'redirect'. The code 301 means "Moved Perma
 2. Content-type : both request & response
 3. User-agent : request
 4. Set-cookies : response
-5. Cache-control : response
+5. Cache-control : both request & response
 6. Cookie : request
 ```
 
@@ -204,8 +206,8 @@ console.log(companyArr.age]);
 ```
 var companyArr = JSON.parse('{ "Companies":[ { "company": "Github", "age": 7, "categories":"Services,Internet,Software"},{ "company": "Airbnb", "age": 6, "categories": "Hotels,Travel"},{ "company": "Square", "age": 7, "categories": "FinTech,Hardware + Software,Finance"},{ "company": "Dropbox", "age": 11, "categories": "Cloud Data Services,Storage,Web Hosting"}]}')
 
-companyArr.Companies.map(function(e){
-  return e.company
+companyArr.Companies.forEach(function(e){
+  console.log(e.company)
 })
 
 --> ["Github", "Airbnb", "Square", "Dropbox"]
